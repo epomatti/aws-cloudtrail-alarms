@@ -18,7 +18,9 @@ module "cloudtrail" {
   source = "./modules/cloudtrail"
 }
 
-module "cloudwatch_logs_metric_filter" {
-  source                           = "./modules/cw-metrics"
+module "cw" {
+  source = "./modules/cloudwatch"
+
   cloudtrail_cloudwatch_group_name = module.cloudtrail.trail_cw_group_name
+  sns_topic_subscription_email     = var.sns_topic_subscription_email
 }

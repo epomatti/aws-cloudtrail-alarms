@@ -1,7 +1,17 @@
+resource "aws_vpc" "main" {
+  cidr_block           = "10.0.0.0/16"
+  instance_tenancy     = "default"
+  enable_dns_hostnames = true
+
+  tags = {
+    Name = "vpc-cloudtrail-examples"
+  }
+}
+
 resource "aws_security_group" "cloudtrail" {
   name        = "cloudtrail-test-sg"
   description = "Testing with CloudTrail"
-  vpc_id      = var.vpc_id
+  vpc_id      = aws_vpc.main.id
 
   tags = {
     Name = "cloudtrail-test-sg"
