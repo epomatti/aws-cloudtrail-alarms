@@ -4,7 +4,13 @@ CloudTrail configuration with CloudWatch Alarms and Metrics integrated.
 
 It uses the documentation [examples][1] as a reference.
 
-To start, create the infrastructure:
+Set the `.auto.tfvars` file:
+
+```terraform
+sns_topic_subscription_email = ""
+```
+
+Create the infrastructure:
 
 ```sh
 terraform init
